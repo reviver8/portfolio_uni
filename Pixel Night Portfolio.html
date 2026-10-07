@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<!---->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Name | UX/UI & Software Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0D0221;--violet:#893BFF;--pink:#EC89C3;--sun:#FFE25A;--ice:#77DEEF;--text:#FFF8E7;--panel:rgba(13,2,33,.93);
+--head:'Press Start 2P','Courier New',monospace;--body:'Pixelify Sans','Courier New',monospace;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--body);font-size:clamp(1.05rem,2.4vw,1.25rem);line-height:1.55}
+#bg{position:fixed;inset:0;width:100%;height:100%;image-rendering:pixelated;z-index:-1}
+a{color:var(--ice)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);color:var(--sun);line-height:1.5;margin:0 0 .8em;font-weight:400}
+h1{font-size:clamp(1.1rem,4.2vw,2rem)}h2{font-size:clamp(.9rem,3vw,1.3rem)}h3{font-size:clamp(.75rem,2.4vw,1rem);color:var(--ice)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--night);border-bottom:4px solid var(--violet);display:flex;gap:.4rem;overflow-x:auto;padding:.6rem .8rem}
+nav a{font-family:var(--head);font-size:clamp(.55rem,1.8vw,.75rem);color:var(--text);text-decoration:none;padding:.7rem .8rem;border:3px solid transparent;white-space:nowrap}
+nav a:hover{border-color:var(--pink)}nav a[aria-current=page]{background:var(--violet);border-color:var(--sun);color:#fff}
+nav .brand{margin-right:auto;color:var(--sun)}
+main{max-width:1000px;margin:0 auto;padding:1.2rem .9rem 2rem}
+.box{background:var(--panel);border:4px solid var(--violet);box-shadow:6px 6px 0 var(--pink);padding:clamp(1rem,3vw,1.8rem);margin-bottom:1.6rem}
+.hero{display:flex;gap:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.avatar{width:clamp(110px,22vw,170px);aspect-ratio:1;image-rendering:pixelated;border:4px solid var(--sun);background:var(--night)}
+#typed::after{content:"_";animation:blink 1s steps(2) infinite;color:var(--pink)}@keyframes blink{50%{opacity:0}}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card{display:block;text-decoration:none;color:var(--text);background:var(--night);border:4px solid var(--ice);padding:1rem;transition:transform .1s}
+.card:hover,.card:focus-visible{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--sun)}
+.card h3{color:var(--sun)}.card small{color:var(--pink);font-size:1rem}
+.card.todo{border-style:dashed;border-color:var(--pink)}
+.stat{font-family:var(--head);font-size:clamp(1rem,4vw,1.6rem);color:var(--ice)}
+.stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+.ph{background:var(--night);border:4px dashed var(--pink);min-height:150px;display:grid;place-items:center;text-align:center;padding:1rem;color:var(--text)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.banner{height:90px;border:4px solid var(--sun);margin-bottom:1.2rem;background:repeating-linear-gradient(90deg,var(--violet) 0 24px,var(--night) 24px 48px,var(--pink) 48px 72px,var(--night) 72px 96px);background-size:96px 100%;animation:slide 3s steps(8) infinite;display:grid;place-items:center}
+.banner span{font-family:var(--head);font-size:clamp(.6rem,2.4vw,.9rem);background:var(--night);color:var(--sun);padding:.7rem 1rem;border:3px solid var(--ice)}
+@keyframes slide{to{background-position:96px 0}}
+ul{padding-left:1.3rem}li{margin-bottom:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}.tags span{border:3px solid var(--ice);padding:.1rem .6rem;color:var(--ice)}
+svg.scene{width:100%;height:auto;image-rendering:pixelated;border:4px solid var(--ice);background:#1b0b3d;display:block}
+.hot{cursor:pointer}.hot:hover rect,.hot:focus-visible rect{stroke:var(--sun);stroke-width:3}
+.hot.seen .dot{fill:var(--ice)}.dot{fill:var(--pink);animation:blink 1s steps(2) infinite}
+#info{min-height:7.5rem;border:4px solid var(--pink);padding:1rem;margin-top:1rem;background:var(--night)}
+footer{background:var(--night);border-top:4px solid var(--violet);padding:1.6rem .9rem}
+footer .in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+footer p{margin:.3rem 0}
+.page{display:none}.page.on{display:block}
+.btn{font-family:var(--head);font-size:.7rem;background:var(--violet);color:#fff;border:3px solid var(--sun);padding:.8rem 1rem;cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<nav aria-label="Main">
+  <a class="brand" href="#home">Your Name</a>
+  <a href="#home">Home</a><a href="#p1">Platform AI</a><a href="#p2">Test Accounts</a><a href="#p3">Experience 3</a><a href="#playground">Playground</a>
+</nav>
+
+<main>
+<!-- HOME -->
+<section class="page" id="home">
+  <div class="box hero">
+    <div><h1 id="typed" aria-label="Hi, I'm Your Name. I design and build for the web."></h1>
+    <p>UX/UI designer and software engineer at Georgia Tech, working across frontend and full-stack.</p></div>
+    <svg class="avatar" viewBox="0 0 16 16" role="img" aria-label="Pixel avatar placeholder"><rect width="16" height="16" fill="#893BFF"/><rect x="5" y="3" width="6" height="6" fill="#FFE25A"/><rect x="6" y="5" width="1" height="1" fill="#0D0221"/><rect x="9" y="5" width="1" height="1" fill="#0D0221"/><rect x="7" y="7" width="2" height="1" fill="#EC89C3"/><rect x="3" y="10" width="10" height="6" fill="#77DEEF"/><rect x="4" y="2" width="8" height="2" fill="#0D0221"/></svg>
+  </div>
+
+  <div class="box">
+    <h2>Get to know me</h2>
+    <p>Click the glowing spots in my workspace to learn more. <span id="count">0 of 4 found</span></p>
+    <svg class="scene" viewBox="0 0 160 90" shape-rendering="crispEdges" role="group" aria-label="Pixel workspace with 4 clickable items">
+      <rect width="160" height="90" fill="#1b0b3d"/>
+      <rect x="10" y="8" width="44" height="34" fill="#0D0221" stroke="#77DEEF" stroke-width="2"/>
+      <circle cx="40" cy="20" r="6" fill="#FFE25A"/><rect x="18" y="14" width="2" height="2" fill="#FFE25A"/><rect x="26" y="30" width="2" height="2" fill="#77DEEF"/>
+      <rect x="0" y="64" width="160" height="26" fill="#893BFF"/><rect x="0" y="64" width="160" height="3" fill="#EC89C3"/>
+      <g class="hot" tabindex="0" role="button" aria-label="Laptop" data-k="laptop"><rect x="64" y="40" width="34" height="22" fill="#0D0221" stroke="#EC89C3" stroke-width="2"/><rect x="68" y="44" width="26" height="14" fill="#77DEEF"/><rect x="60" y="62" width="42" height="3" fill="#FFF8E7"/><rect class="dot" x="95" y="38" width="5" height="5"/></g>
+      <g class="hot" tabindex="0" role="button" aria-label="3D printer" data-k="printer"><rect x="112" y="38" width="30" height="26" fill="#0D0221" stroke="#EC89C3" stroke-width="2"/><rect x="118" y="52" width="18" height="8" fill="#FFE25A"/><rect x="126" y="42" width="4" height="8" fill="#77DEEF"/><rect class="dot" x="138" y="35" width="5" height="5"/></g>
+      <g class="hot" tabindex="0" role="button" aria-label="Bookshelf" data-k="books"><rect x="70" y="8" width="40" height="26" fill="#0D0221" stroke="#EC89C3" stroke-width="2"/><rect x="74" y="12" width="5" height="18" fill="#FFE25A"/><rect x="81" y="14" width="5" height="16" fill="#77DEEF"/><rect x="88" y="11" width="5" height="19" fill="#EC89C3"/><rect x="95" y="15" width="5" height="15" fill="#893BFF"/><rect class="dot" x="107" y="5" width="5" height="5"/></g>
+      <g class="hot" tabindex="0" role="button" aria-label="Whiteboard" data-k="board"><rect x="118" y="8" width="34" height="24" fill="#FFF8E7" stroke="#EC89C3" stroke-width="2"/><rect x="122" y="14" width="18" height="2" fill="#893BFF"/><rect x="122" y="20" width="24" height="2" fill="#0D0221"/><rect class="dot" x="148" y="5" width="5" height="5"/></g>
+    </svg>
+    <div id="info" aria-live="polite"><p>Pick an item above to start.</p></div>
+  </div>
+
+  <h2>Projects</h2>
+  <div class="grid3" style="margin-bottom:1.6rem">
+    <a class="card" href="#p1"><h3>Platform AI Assistant</h3><p>Cargill, 2026. Proof of concept to MVP.</p><small>94% less on-call time</small></a>
+    <a class="card" href="#p2"><h3>Test Account Platform</h3><p>Cargill, 2025. Automated test data.</p><small>97% lower API latency</small></a>
+    <a class="card todo" href="#p3"><h3>Experience 3</h3><p>Coming soon.</p><small>Placeholder</small></a>
+  </div>
+</section>
+
+<!-- PROJECT 1 -->
+<section class="page" id="p1">
+  <div class="banner"><span>Animated GIF here</span></div>
+  <div class="box">
+    <h1>Platform AI Assistant</h1>
+    <p>Platform Software Engineering Intern, Cargill, Atlanta. May to August 2026.</p>
+    <div class="stats"><div><div class="stat">94%</div>less time for on-call engineers</div><div><div class="stat">$160K</div>saved</div><div><div class="stat">30</div>engineers on the team</div></div>
+    <div class="tags"><span>Copilot Studio</span><span>AWS Quick Suite</span><span>Jira</span><span>Mural</span><span>Agile</span></div>
+    <div class="two"><div class="ph">Screenshot 1<br>(add image)</div><div class="ph">Screenshot 2<br>(add image)</div></div>
+    <h2>What I did</h2>
+    <ul><li>Built a proof of concept for a data-driven AI assistant using Copilot Studio and AWS Quick Suite.</li>
+    <li>Collected user feedback and turned the proof of concept into a minimum viable product. It cut on-call engineers' time by 94% and saved $160,000.</li>
+    <li>Worked with a global team of 30 engineers in Agile. We used Jira and Mural for biweekly feedback, sprint planning, and daily standups.</li></ul>
+  </div>
+</section>
+
+<!-- PROJECT 2 -->
+<section class="page" id="p2">
+  <div class="banner"><span>Animated GIF here</span></div>
+  <div class="box">
+    <h1>Test Account Generation Platform</h1>
+    <p>Frontend Software Engineering Intern, Cargill, Atlanta. May to August 2025.</p>
+    <div class="stats"><div><div class="stat">97%</div>lower backend API latency</div></div>
+    <div class="tags"><span>React JS</span><span>GitHub CI/CD</span><span>Azure DevOps</span><span>Agile</span></div>
+    <div class="two"><div class="ph">Screenshot 1<br>(add image)</div><div class="ph">Screenshot 2<br>(add image)</div></div>
+    <h2>What I did</h2>
+    <ul><li>Automated test account creation with a new platform. It cut backend API call latency by 97% and simplified development workflows.</li>
+    <li>Used a CI/CD workflow with GitHub and React JS to improve the app's UI. I followed user-centered design to meet stakeholder needs.</li>
+    <li>Joined daily Agile standups in Azure DevOps to track progress, plan sprints, and clear technical and non-technical blockers early.</li></ul>
+  </div>
+</section>
+
+<!-- PROJECT 3 -->
+<section class="page" id="p3">
+  <div class="banner"><span>Animated GIF here</span></div>
+  <div class="box">
+    <h1>Experience Name</h1>
+    <p>Role, Company, Dates. (Fill in later.)</p>
+    <div class="two"><div class="ph">Image 1<br>(add image)</div><div class="ph">Image 2<br>(add image)</div></div>
+    <h2>What I did</h2>
+    <p>Project description goes here. Add your results, tools, and team context.</p>
+  </div>
+</section>
+
+<!-- PLAYGROUND -->
+<section class="page" id="playground">
+  <div class="box"><h1>Playground</h1><p>Side projects and things I do for fun. They show how I think outside of work.</p></div>
+  <div class="box">
+    <h2>Passion 1: Hive Makerspace</h2>
+    <div class="two"><div class="ph">Photo<br>(add image)</div><div class="ph">Photo<br>(add image)</div></div>
+    <p>As a Master Peer Instructor since August 2025, I lead end-user education in 3D printing with OrcaSlicer and OnShape. I organize makerspace initiatives, inventory, and collaboration in Airtable and Figma, and work with 200 instructors in a student-run space built on safety, mentorship, and community.</p>
+  </div>
+  <div class="box">
+    <h2>Passion 2: Languages</h2>
+    <div class="two"><div class="ph">Photo<br>(add image)</div><div class="ph">Photo<br>(add image)</div></div>
+    <p>I'm minoring in French and also study Latin (intermediate) and American Sign Language (basic). Learning how people communicate shapes how I design interfaces.</p>
+  </div>
+  <div class="box">
+    <h2>Passion 3: Teaching</h2>
+    <p>As a teaching assistant for Object-Oriented Design (CS 2340) from January to May 2025, I gave weekly feedback on assignments and met with student mentees and fellow TAs to keep projects on schedule.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="in">
+    <div><h3>Contact</h3><p>Email: <a href="mailto:you@example.com">you@example.com</a></p><p>Phone: (000) 000-0000</p></div>
+    <div><h3>Find me online</h3><p><a href="#">LinkedIn</a></p><p><a href="#">GitHub</a></p><p><a href="#">Figma / Resume</a></p></div>
+    <div><h3>Based in</h3><p>Atlanta, GA</p><p>Georgia Tech, B.S. Computer Science, expected December 2026</p></div>
+  </div>
+</footer>
+
+<script>
+// Routing
+const pages=[...document.querySelectorAll('.page')],links=[...document.querySelectorAll('nav a:not(.brand)')];
+function route(){const id=(location.hash||'#home').slice(1);const t=document.getElementById(id)?id:'home';
+ pages.forEach(p=>p.classList.toggle('on',p.id===t));
+ links.forEach(a=>a.getAttribute('href')==='#'+t?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+ window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+
+// Typing greeting
+(function(){const el=document.getElementById('typed'),s="Hi, I'm Your Name. I design and build for the web.";let i=0;
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=s;return}
+ const t=setInterval(()=>{el.textContent=s.slice(0,++i);if(i>=s.length)clearInterval(t)},70)})();
+
+// Get-to-know-me game
+const facts={
+ laptop:["Computer Science at Georgia Tech","I graduate in December 2026 with a B.S. in Computer Science and a minor in French. I like data structures, databases, and object-oriented design, and I build with Java, Python, JavaScript, React, and AWS."],
+ printer:["Hive Makerspace","I'm a Master Peer Instructor teaching 3D printing with OrcaSlicer and OnShape. I help run a student makerspace with 200 instructors."],
+ books:["Languages","English is my first language. I'm intermediate in Latin and have basic French and American Sign Language."],
+ board:["Teaching and teamwork","I was a TA for Object-Oriented Design, and I've worked in Agile teams at Cargill with up to 30 engineers."]};
+let seen=new Set();
+document.querySelectorAll('.hot').forEach(g=>{const open=()=>{const f=facts[g.dataset.k];
+ document.getElementById('info').innerHTML='<h3></h3><p></p>';
+ document.querySelector('#info h3').textContent=f[0];document.querySelector('#info p').textContent=f[1];
+ g.classList.add('seen');seen.add(g.dataset.k);
+ document.getElementById('count').textContent=seen.size===4?'All 4 found!':seen.size+' of 4 found'};
+ g.addEventListener('click',open);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+
+// Pixel background: sky, stars, moon, clouds, city
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');
+
+function paint(){const S=innerWidth<600?4:5,w=Math.ceil(innerWidth/S),h=Math.ceil(innerHeight/S);cv.width=w;cv.height=h;
+ const bands=['#0D0221','#150536','#1d0a4a','#2a1066','#3a1585'];bands.forEach((c,i)=>{cx.fillStyle=c;cx.fillRect(0,Math.floor(h*i/5),w,Math.ceil(h/5))});
+ let r=7;const rnd=()=>(r=(r*9301+49297)%233280)/233280;
+ for(let i=0;i<w*h/90;i++){cx.fillStyle=['#FFE25A','#77DEEF','#FFF8E7'][i%3];cx.fillRect(Math.floor(rnd()*w),Math.floor(rnd()*h*.6),1,1)}
+ const mr=Math.max(7,Math.min(14,Math.floor(w/9))),mx=Math.floor(w*.78),my=Math.floor(h*.2);
+ cx.fillStyle='#FFE25A';for(let y=-mr;y<=mr;y++)for(let x=-mr;x<=mr;x++)if(x*x+y*y<=mr*mr)cx.fillRect(mx+x,my+y,1,1);
+ cx.fillStyle='#e6c63c';[[-3,-2,2],[2,3,3],[-1,4,1]].forEach(([a,b,c])=>{cx.fillRect(mx+a,my+b,c,c)});
+ const cloud=(x,y,c)=>{cx.fillStyle=c;cx.fillRect(x,y+2,16,3);cx.fillRect(x+3,y,8,3);cx.fillRect(x+10,y+1,5,2)};
+ cloud(Math.floor(w*.08),Math.floor(h*.16),'#EC89C3');cloud(Math.floor(w*.45),Math.floor(h*.3),'#893BFF');cloud(Math.floor(w*.62),Math.floor(h*.1),'#EC89C3');cloud(Math.floor(w*.25),Math.floor(h*.42),'#893BFF');
+ r=21;const base=h;let x=0;
+ while(x<w){const bw=4+Math.floor(rnd()*7),bh=Math.floor(h*(.12+rnd()*.25));
+  cx.fillStyle=rnd()>.5?'#1a0840':'#120430';cx.fillRect(x,base-bh,bw,bh);
+  for(let wy=base-bh+2;wy<base-2;wy+=3)for(let wx=x+1;wx<x+bw-1;wx+=2)if(rnd()>.72){cx.fillStyle=rnd()>.5?'#FFE25A':'#77DEEF';cx.fillRect(wx,wy,1,1)}
+  x+=bw+(rnd()>.7?1:0)}
+}
+paint();addEventListener('resize',paint);
+</script>
+</body>
+</html>
